@@ -23,11 +23,11 @@ const Cart = () => {
 
     // Prepare the payment payload for eSewa
     const payload = {
-      amt: subTotal,
+      amt: 36,
       psc: 0,
-      pdc: 0,
-      txAmt: 0,
-      tAmt: subTotal,
+      pdc: 20,
+      txAmt: 33,
+      tAmt: 69,
       pid: ESEWA_TEST_PID,
       scd: ESEWA_SCD,
       su: "https://d2evy.csb.app/success",
