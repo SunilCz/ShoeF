@@ -6,7 +6,6 @@ import Wrapper from "@/components/Wrapper";
 import CartItem from "@/components/CartItem";
 import { useRouter } from "next/router";
 import KhaltiCheckout from "khalti-checkout-web";
-import { ESEWA_TEST_PID, ESEWA_URL, ESEWA_SCD } from "./config";
 
 const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -28,14 +27,14 @@ const Cart = () => {
       pdc: 20,
       txAmt: 33,
       tAmt: 69,
-      pid: ESEWA_TEST_PID,
-      scd: ESEWA_SCD,
+      pid: "Esewa_Task_4",
+      scd: "EPAYTEST",
       su: "https://d2evy.csb.app/success",
-      fu: "https://d2evy.csb.app/failed"
+      fu: "https://d2evy.csb.app/failed",
     };
 
     // Generate the eSewa payment URL
-    const paymentUrl = `${ESEWA_URL}?pid=${payload.pid}&amt=${payload.amt}&psc=${payload.psc}&pdc=${payload.pdc}&txAmt=${payload.txAmt}&scd=${payload.scd}&su=${window.location.origin}/esewa-success&fu=${window.location.origin}/esewa-failed`;
+    const paymentUrl = `https://uat.esewa.com.np/epay?pid=${payload.pid}&amt=${payload.amt}&psc=${payload.psc}&pdc=${payload.pdc}&txAmt=${payload.txAmt}&scd=${payload.scd}&su=${window.location.origin}/esewa-success&fu=${window.location.origin}/esewa-failed`;
 
     // Redirect to the eSewa payment URL
     window.location.href = paymentUrl;
@@ -44,7 +43,7 @@ const Cart = () => {
   const handleKhaltiPayment = () => {
     setLoading(true);
 
-    const config = {
+    const khaltiConfig = {
       publicKey: "test_public_key_4f0056c164884b55b26aaf7caf6511af",
       productIdentity: "your_product_identity",
       productName: "Your Product Name",
@@ -67,7 +66,7 @@ const Cart = () => {
       },
     };
 
-    const khaltiCheckout = new KhaltiCheckout(config);
+    const khaltiCheckout = new KhaltiCheckout(khaltiConfig);
     khaltiCheckout.show();
   };
 
@@ -106,7 +105,6 @@ const Cart = () => {
                     transaction fees.
                   </div>
                 </div>
-               
                 <button
                   className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center"
                   onClick={handleKhaltiPayment}
