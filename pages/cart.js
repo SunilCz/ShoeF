@@ -29,8 +29,8 @@ const Cart = () => {
       tAmt: 69,
       pid: "Esewa_Task_4",
       scd: "EPAYTEST",
-      su: "https://d2evy.csb.app/success",
-      fu: "https://d2evy.csb.app/failed",
+//       su: "https://d2evy.csb.app/success",
+//       fu: "https://d2evy.csb.app/failed",
     };
 
     // Generate the eSewa payment URL
