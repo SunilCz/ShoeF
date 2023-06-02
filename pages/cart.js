@@ -34,8 +34,7 @@ const Cart = () => {
     };
 
     // Generate the eSewa payment URL
-    const paymentUrl = `https://uat.esewa.com.np/epay?pid=${payload.pid}&amt=${payload.amt}&psc=${payload.psc}&pdc=${payload.pdc}&txAmt=${payload.txAmt}&scd=${payload.scd}&su=${window.location.origin}/esewa-success&fu=${window.location.origin}/esewa-failed`;
-
+    const paymentUrl = `https://uat.esewa.com.np/epay?pid=${payload.pid}&amt=${payload.amt}&psc=${payload.psc}&pdc=${payload.pdc}&txAmt=${payload.txAmt}&scd=${payload.scd}`;
     // Redirect to the eSewa payment URL
     window.location.href = paymentUrl;
   };
