@@ -17,6 +17,11 @@ const Cart = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const ESEWA_TEST_PID = "Esewa_Task_4";
+  const ESEWA_SCD = "EPAYTEST";
+  const ESEWA_URL = "https://uat.esewa.com.np/";
+  const ESEWA_FRAUD_TEST_URL = "https://uat.esewa.com.np/epay/transrec";
+
   const handleESewaPayment = () => {
     setLoading(true);
 
@@ -27,14 +32,15 @@ const Cart = () => {
       pdc: 20,
       txAmt: 33,
       tAmt: 69,
-      pid: "Esewa_Task_4",
-      scd: "EPAYTEST",
-//       su: "https://d2evy.csb.app/success",
-//       fu: "https://d2evy.csb.app/failed",
+      pid: ESEWA_TEST_PID,
+      scd: ESEWA_SCD,
+      su: "https://d2evy.csb.app/success",
+      fu: "https://d2evy.csb.app/failed",
     };
 
     // Generate the eSewa payment URL
-    const paymentUrl = `https://uat.esewa.com.np/epay?pid=${payload.pid}&amt=${payload.amt}&psc=${payload.psc}&pdc=${payload.pdc}&txAmt=${payload.txAmt}&scd=${payload.scd}`;
+    const paymentUrl = `${ESEWA_URL}?pid=${payload.pid}&amt=${payload.amt}&psc=${payload.psc}&pdc=${payload.pdc}&txAmt=${payload.txAmt}&scd=${payload.scd}&su=${window.location.origin}/esewa-success&fu=${window.location.origin}/esewa-failed`;
+
     // Redirect to the eSewa payment URL
     window.location.href = paymentUrl;
   };
@@ -104,6 +110,7 @@ const Cart = () => {
                     transaction fees.
                   </div>
                 </div>
+               
                 <button
                   className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center"
                   onClick={handleKhaltiPayment}
@@ -150,3 +157,4 @@ const Cart = () => {
 };
 
 export default Cart;
+
